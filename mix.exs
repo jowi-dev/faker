@@ -8,7 +8,7 @@ defmodule Faker.Mixfile do
     [
       app: :faker,
       version: @version,
-      elixir: "~> 1.6",
+      elixir: "~> 1.20",
       description: "Faker is a pure Elixir library for generating fake data.",
       package: package(),
       name: "Faker",
@@ -16,9 +16,6 @@ defmodule Faker.Mixfile do
       docs: docs(),
       source_url: @source_url,
       homepage_url: @source_url,
-      preferred_cli_env: [
-        "test.watch": :test
-      ],
       dialyzer: [
         flags: [
           :error_handling,
@@ -37,6 +34,10 @@ defmodule Faker.Mixfile do
     ]
   end
 
+  def cli do
+    [preferred_envs: ["test.watch": :test]]
+  end
+
   defp env do
     [
       locale: :en,
@@ -47,13 +48,12 @@ defmodule Faker.Mixfile do
 
   defp deps do
     [
-      {:credo, "== 1.7.11", only: [:dev, :test], runtime: false},
-      {:dialyxir, "== 1.4.5", only: [:dev], runtime: false},
-      {:earmark, "== 1.4.47", only: :dev, runtime: false},
-      {:ex_doc, "== 0.37.0", only: :dev, runtime: false},
+      {:credo, "== 1.7.18", only: [:dev, :test], runtime: false},
+      {:dialyxir, "== 1.4.7", only: [:dev], runtime: false},
+      {:earmark, "== 1.4.49", only: :dev, runtime: false},
+      {:ex_doc, "== 0.40.3", only: :dev, runtime: false},
       {:makeup, "== 1.2.1"},
       {:makeup_elixir, "== 1.0.1"},
-      {:mix_test_watch, "== 1.2.0", only: [:dev, :test], runtime: false}
     ]
   end
 
